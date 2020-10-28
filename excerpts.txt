@@ -1,0 +1,51 @@
+# https://wiki.nesdev.com/w/index.php/MMC3
+
+\	+;.*
+^B[^\n\	]+:\	;
+; ==============================================================================
+; ENTID
+; ==============================================================================
+
+for level loading
+-----------------
+todo: find out where palettes come from
+
+starting position
+-----------------
+group set at f:1260
+group starting positions table at f:12e8
+
+for enemy oam
+-------------
+small 1st ghost enemy tile $a9 loaded from 5:116d
+- from func f:16a3
+5:116d gotten from $9168 at $00/$01 (idx $37*2=$6e)
+- loaded from 5:026e/f
+- from func f:157e
+$37 idx gotten from $01/$02 pointing to a:154f (idx 0)
+- from func a:1544
+- idx 0 from $1b at a:1515 (always 0 for ghost enemy)
+
+entity struct ($10)
+-------------------
+8 max entities
+0 - x tile idx
+1 - x sub value
+2 - y tile idx
+3 - y sub value
+4 - f8 when moving left, 8 moving right (movement offset?)
+6 - x-related
+9 - 1 moving right, 3 moving left
+b - determines sprite type?
+
+banks 0-4 - level data
+bank 1 - text funcs and data
+bank 5 - oam data
+bank 6 - static layouts
+bank 7 - entity init funcs, and fight update funcs
+banks 8-9 - sound data
+banks 10-11 - entity update funcs
+banks 12-15 - core functionality
+
+
+complete - 0
